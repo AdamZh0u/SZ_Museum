@@ -60,8 +60,6 @@ def book_tickets(info):
     order_data = {"coupon_id": 0, 'source': "", "product_list": [{"type": "venue", "product_id": 4207, "sku_id": sku_id,
                                                                   "start_time": info[0], "end_time": info[1], "use_date": info[2], "visitors": user_ids, "product_num": 2, "remark": ""}]}
     try:
-        s = requests.session()
-        s.keep_alive = False
         res = requests.get(
             order_api % (quote(json.dumps(order_data)).replace('%20', ''),  token),
             headers=request_header, timeout=10, verify=False)
